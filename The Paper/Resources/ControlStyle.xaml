@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:The_Paper.Resources">
+    <Style TargetType="GridView" x:Key="NewsListStyle">
+        <Setter Property="Background" Value="#F0F0F0" />
+    </Style>
+
+    
+    <!--Custom Style For GirdViewItem-->
+    <Style TargetType="GridViewItem" x:Key="NewsListItemStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GridViewItem">
+                    <ListViewItemPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="RelativePanel" x:Key="NewsCardStyle">
+        <Setter Property="Background" Value="White" />
+    </Style>
+</ResourceDictionary>

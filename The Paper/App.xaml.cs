@@ -7,6 +7,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +32,7 @@ namespace The_Paper
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
         }
 
         /// <summary>
@@ -39,10 +42,15 @@ namespace The_Paper
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            var view = ApplicationView.GetForCurrentView();
+            view.TitleBar.BackgroundColor = Color.FromArgb(255, 245, 245, 245);
+            view.TitleBar.InactiveBackgroundColor = Color.FromArgb(255, 245, 245, 245);
+            view.TitleBar.ButtonBackgroundColor = Color.FromArgb(255, 245, 245, 245);
+            view.TitleBar.ButtonInactiveBackgroundColor = Color.FromArgb(255, 245, 245, 245);
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
-                this.DebugSettings.EnableFrameRateCounter = true;
+                this.DebugSettings.EnableFrameRateCounter = false;
             }
 #endif
             Frame rootFrame = Window.Current.Content as Frame;

@@ -5,9 +5,26 @@
     xmlns:local="using:The_Paper"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local2="using:The_Paper.Models"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <SplitView Name="splitView" DisplayMode="CompactInline" CompactPaneLength="{Binding Path=ActualWidth,ElementName=Ham}">
+            <SplitView.Pane>
+                <StackPanel Background="#F5F5F5">
+                    <Button Name="Ham" Background="Transparent" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Click="Ham_Click"/>
+                    <ListBox ItemsSource="{Binding ChannelList}" SelectionChanged="ListBox_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="local2:Channel">
+                                <TextBlock Text="{x:Bind name}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="mainFrame"/>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>

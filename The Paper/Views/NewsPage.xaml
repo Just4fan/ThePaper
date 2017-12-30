@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="The_Paper.Views.NewsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:The_Paper.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local2="using:The_Paper.Models"
+    xmlns:local3="using:The_Paper.Controls"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary Source="/Resources/ControlStyle.xaml" />
+    </Page.Resources>
+    
+    <Grid>
+        <local3:TabView 
+            TabSwitch="TabView_TabSwitch"
+            TabNameList="{Binding TabNameList}">
+            <local3:TabView.View>
+                <ScrollViewer>
+                    <RelativePanel>
+                        <RelativePanel Name="topNews" Visibility="{Binding TopNewsVisibility}"
+                                       Margin="10,10,10,10"
+                                       Background="White" 
+                                       Height="200">
+                            <Image Name="topNewsImage" 
+                                       Source="{Binding TopNews.image}"
+                                       Margin="10,10,10,10" 
+                                       RelativePanel.AlignLeftWithPanel="True" />
+                            <TextBlock Name="topNewsHL" FontSize="22" 
+                                       Margin="10,10,10,10"
+                                       TextWrapping="WrapWholeWords"
+                                       Text="{Binding TopNews.headLine}"
+                                       RelativePanel.RightOf="topNewsImage"
+                                       RelativePanel.AlignTopWithPanel="True" />
+                            <TextBlock Name="topNewsMC" FontSize="16"
+                                       Margin="10,10,10,10"
+                                       TextWrapping="WrapWholeWords"
+                                       Text="{Binding TopNews.mainContent}"
+                                       RelativePanel.Below="topNewsHL"
+                                       RelativePanel.RightOf="topNewsImage" />
+                            <TextBlock Name="topNewsTag" FontSize="10"
+                                       Margin="10,10,10,10"
+                                       Text="{Binding TopNews.tag}"
+                                       RelativePanel.AlignBottomWithPanel="True"
+                                       RelativePanel.AlignRightWithPanel="True" />
+                            <TextBlock Name="topNewsCT" FontSize="10"
+                                       Margin="10,10,10,10"
+                                       Text="{Binding TopNews.commentCount}"
+                                       RelativePanel.AlignBottomWithPanel="True"
+                                       RelativePanel.RightOf="topNewsImage" />
+                        </RelativePanel>
+                        <GridView ItemsSource="{Binding NewsList}" 
+                                  Background="#F0F0F0" RelativePanel.Below="topNews">
+                            <GridView.ItemTemplate>
+                                <DataTemplate x:DataType="local2:News">
+                                    <RelativePanel Width="300" Margin="10,10,10,10" Background="White">
+                                        <Image Source="{x:Bind image}" Name="image" Margin="10,10,10,10"/>
+                                        <TextBlock Text="{x:Bind headLine}" Name="headLine" RelativePanel.Below="image" FontSize="18" TextWrapping="WrapWholeWords" Margin="10,10,10,10"/>
+                                        <TextBlock Text="{x:Bind mainContent}" Name="mainContent" RelativePanel.Below="headLine" FontSize="12" TextWrapping="WrapWholeWords" TextTrimming="WordEllipsis" Margin="10,10,10,10"/>
+                                        <TextBlock Text="{x:Bind commentCount}" Name="commentCount" 
+                                   RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True"  RelativePanel.Below="mainContent"
+                                   FontSize="10" Margin="10,10,10,10"/>
+                                        <TextBlock Text="{x:Bind tag}" Name="tag" 
+                                   RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="mainContent"
+                                   FontSize="10" Margin="10,10,10,10"/>
+                                    </RelativePanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </RelativePanel>
+                </ScrollViewer>
+            </local3:TabView.View>
+        </local3:TabView>
+    </Grid>
+</Page>
