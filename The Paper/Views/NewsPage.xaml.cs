@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -30,6 +31,7 @@ namespace The_Paper.Views
     public sealed partial class NewsPage : Page
     {
         NewsPageVM newsPageVM;
+        double verticaloffset;
 
         public NewsPage()
         {
@@ -46,7 +48,15 @@ namespace The_Paper.Views
 
         private void TabView_TabSwitch(object sender, EventArgs e)
         {
+            scrollViewer.ChangeView(null, 0, null);
             newsPageVM.switchTab(sender, e as TabSwitchEventArgs);
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            if ((sender as ScrollViewer).VerticalOffset + (sender as ScrollViewer).ViewportHeight
+                == (sender as ScrollViewer).ExtentHeight)
+                newsPageVM.LoadMore();
         }
     }
 }

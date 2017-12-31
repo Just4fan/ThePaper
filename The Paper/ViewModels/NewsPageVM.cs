@@ -18,6 +18,8 @@ namespace The_Paper.ViewModels
         private NewsPageService newsPageService;
         private News topNews;
         private int curIndex;
+        private bool onLoad;
+        private NewsListModel newsListModel;
 
         private Visibility topNewsVisibility;
 
@@ -89,29 +91,46 @@ namespace The_Paper.ViewModels
         {
             foreach (var channel in ChannelsData.channelList[0].subChannel)
                 TabNameList.Add(channel.name);
-            NewsListModel newsListModel = await newsPageService.parseHtml(0, 0);
+            newsListModel = await newsPageService.Load(0, 0);
             TopNews = newsListModel.TopNews;
             NewsList = newsListModel.NewsList;
         }
 
         public async Task Load(int index, int subindex)
         {
+            if (onLoad)
+                return;
+            onLoad = true;
             TopNewsVisibility = Visibility.Visible;
             curIndex = index;
             TabNameList.Clear();
             foreach (var channel in ChannelsData.channelList[index].subChannel)
                 TabNameList.Add(channel.name);
-            NewsListModel newsListModel = await newsPageService.parseHtml(index, subindex);
+            newsListModel = await newsPageService.Load(index, subindex);
             TopNews = newsListModel.TopNews;
             NewsList = newsListModel.NewsList;
+            onLoad = false;
+        }
+
+        public async Task LoadMore()
+        {
+            if (onLoad)
+                return;
+            onLoad = true;
+            await newsPageService.LoadMore(newsListModel);
+            onLoad = false;
         }
 
         public async void switchTab(object sender, TabSwitchEventArgs args)
         {
+            if (onLoad)
+                return;
+            onLoad = true;
             TopNewsVisibility = args.tabIndex == 0 ? Visibility.Visible : Visibility.Collapsed;
-            NewsListModel newsListModel = await newsPageService.parseHtml(curIndex , args.tabIndex);
+            newsListModel = await newsPageService.Load(curIndex , args.tabIndex);
             TopNews = newsListModel.TopNews;
             NewsList = newsListModel.NewsList;
+            onLoad = false;
         }
     }
 }

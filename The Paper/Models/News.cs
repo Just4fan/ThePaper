@@ -8,6 +8,8 @@ namespace The_Paper.Models
 {
     public class News
     {
+        public string uri { get; set; }
+        public string cid { get; set; }
         public string image { get; set; }
         public string headLine { get; set; }
         public string mainContent { get; set; }

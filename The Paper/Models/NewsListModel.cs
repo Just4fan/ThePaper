@@ -25,5 +25,45 @@ namespace The_Paper.Models
             set { newsList = value; }
         }
 
+        private string lastTime;
+
+        public string LastTime
+        {
+            get { return lastTime; }
+            set { lastTime = value; }
+        }
+
+        private string topCids;
+
+        public string TopCids
+        {
+            get { return topCids; }
+            set { topCids = value; }
+        }
+
+        private string nodeids;
+
+        public string NodeIds
+        {
+            get { return nodeids; }
+            set { nodeids = value; }
+        }
+
+        private string updateUri;
+
+        public string UpdateUri
+        {
+            get { return updateUri; }
+            set { updateUri = value; }
+        }
+
+        private int pageIndex;
+
+        public int PageIndex
+        {
+            get { return pageIndex; }
+            set { pageIndex = value; }
+        }
+
     }
 }

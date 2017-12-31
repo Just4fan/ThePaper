@@ -18,7 +18,7 @@
             TabSwitch="TabView_TabSwitch"
             TabNameList="{Binding TabNameList}">
             <local3:TabView.View>
-                <ScrollViewer>
+                <ScrollViewer Name="scrollViewer" ViewChanged="ScrollViewer_ViewChanged">
                     <RelativePanel>
                         <RelativePanel Name="topNews" Visibility="{Binding TopNewsVisibility}"
                                        Margin="10,10,10,10"

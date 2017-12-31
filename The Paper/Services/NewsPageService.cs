@@ -19,13 +19,16 @@ namespace The_Paper.Services
     {
         private List<Channel> channelList = ChannelsData.channelList;
 
-        public async Task<NewsListModel> parseHtml(int index, int subIndex)
+        public async Task<NewsListModel> Load(int index, int subIndex)
         {
             NewsListModel newsListModel = new NewsListModel();
             ObservableCollection<News> newsList = new ObservableCollection<News>();
             HtmlWeb web = new HtmlWeb();
             News topNews = new News();
-            //Debug.WriteLine(channelList[index].subChannel[subIndex].uri);
+            newsListModel.TopNews = topNews;
+            newsListModel.NewsList = newsList;
+            newsListModel.NodeIds = ChannelsData.channelList[index].subChannel[subIndex].nodeids;
+            newsListModel.UpdateUri = ChannelsData.channelList[index].update_uri;
             var htmlDoc = await web.LoadFromWebAsync(channelList[index].subChannel[subIndex].uri); 
             var ltNode = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='main_lt']//div[@class='pdtt_lt']");
             if(ltNode != null)
@@ -49,16 +52,53 @@ namespace The_Paper.Services
                     }
                 }
             }
-            
-            var newsNodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='news_li']");
+            parse(newsListModel, htmlDoc);
+            return newsListModel;
+        }
+
+        public async Task LoadMore(NewsListModel newsListModel)
+        {
+            string uri = string.Format("{0}nodeids={1}&topCids={2}&pageIndex={3}&lastTime={4}"
+                ,newsListModel.UpdateUri
+                ,newsListModel.NodeIds
+                ,newsListModel.TopCids
+                ,newsListModel.PageIndex + 1
+                ,newsListModel.LastTime);
+            Debug.WriteLine(uri);
+            HtmlWeb web = new HtmlWeb();
+            var htmlDoc = await web.LoadFromWebAsync(uri);
+            parse(newsListModel, htmlDoc);
+        }
+
+        public void parse(NewsListModel newsListModel, HtmlDocument htmlDoc)
+        {
+            var newsNodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='newsbox']/div[@class='news_li']");
             if (newsNodes == null)
-                return newsListModel;
-            foreach(var newsNode in newsNodes)
             {
-                if (newsNode.GetAttributeValue("pageindex", -1) != -1)
+                newsNodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='news_li'] | //div[@lasttime]");
+                if (newsNodes == null)
+                    return;
+            }
+            foreach (var newsNode in newsNodes)
+            {
+                string lastTime = string.Empty;
+                if ((lastTime = newsNode.GetAttributeValue("lastTime", string.Empty)) != string.Empty)
+                {
+                    newsListModel.LastTime = lastTime;
+                    int pageIndex;
+                    if ((pageIndex = newsNode.GetAttributeValue("pageIndex", -1)) != -1)
+                        newsListModel.PageIndex = pageIndex;
+                    Debug.WriteLine(newsListModel.PageIndex);
                     continue;
+                }
                 News news = new News();
-                news.image = newsNode.SelectSingleNode(".//img").GetAttributeValue("src", string.Empty);
+                var news_tu = newsNode.SelectSingleNode(".//div[@class='news_tu']/a");
+                if (news_tu != null)
+                {
+                    news.cid = news_tu.GetAttributeValue("data-id", string.Empty);
+                    news.uri = ChannelsData.main + news_tu.GetAttributeValue("href", string.Empty);
+                    news.image = news_tu.SelectSingleNode("./img").GetAttributeValue("src", string.Empty);
+                }
                 news.headLine = newsNode.SelectSingleNode(".//h2").SelectSingleNode(".//a").InnerText;
                 news.mainContent = newsNode.SelectSingleNode(".//p").InnerText.Trim();
                 var pdtt = newsNode.SelectSingleNode(".//div[@class='pdtt_trbs']");
@@ -68,12 +108,12 @@ namespace The_Paper.Services
                     var commentCount = pdtt.SelectSingleNode("./span[@class='trbszan']");
                     if (commentCount != null)
                         news.commentCount = commentCount.InnerText;
+                    var isRecommend = pdtt.SelectSingleNode("./div[@class='trbstxt']");
+                    if (isRecommend != null)
+                        newsListModel.TopCids += news.cid + ',';
                 }
-                newsList.Add(news);
+                newsListModel.NewsList.Add(news);
             }
-            newsListModel.TopNews = topNews;
-            newsListModel.NewsList = newsList;
-            return newsListModel;
         }
 
         public async void WriteFileFromStream(Stream stream, StorageFolder folder, string filename)

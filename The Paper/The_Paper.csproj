@@ -110,7 +110,6 @@
     <Compile Include="Models\NewsListModel.cs" />
     <Compile Include="Models\TabSwitchEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\HtmlParseService.cs" />
     <Compile Include="Services\NewsPageService.cs" />
     <Compile Include="ViewModels\MainPageVM.cs" />
     <Compile Include="ViewModels\NewsPageVM.cs" />
