@@ -9,7 +9,6 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using The_Paper.Data;
-using The_Paper.Http;
 using The_Paper.Models;
 using Windows.Storage;
 
@@ -31,9 +30,13 @@ namespace The_Paper.Services
             newsListModel.UpdateUri = ChannelsData.channelList[index].update_uri;
             var htmlDoc = await web.LoadFromWebAsync(channelList[index].subChannel[subIndex].uri); 
             var ltNode = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='main_lt']//div[@class='pdtt_lt']");
-            if(ltNode != null)
+            if (ltNode != null)
+            {
                 topNews.image = ltNode.SelectSingleNode(".//img")
                     .GetAttributeValue("src", string.Empty);
+                if (!topNews.image.StartsWith("http:"))
+                    topNews.image = "http:" + topNews.image;
+            }
             var rtNode = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='main_lt']//div[@class='pdtt_rt']");
             if (rtNode != null)
             {
@@ -42,17 +45,18 @@ namespace The_Paper.Services
                 {
                     topNews.headLine = bdNode.SelectSingleNode("./h2/a").InnerText;
                     topNews.mainContent = bdNode.SelectSingleNode("./p").InnerText;
-                    var trbsNode = bdNode.SelectSingleNode(".//div[@class='pdtt_trbs']");
+                    var trbsNode = rtNode.SelectSingleNode(".//div[@class='pdtt_trbs']");
                     if (trbsNode != null)
                     {
-                        topNews.tag = trbsNode.SelectSingleNode("./a").InnerText;
+                        topNews.tag = trbsNode.SelectSingleNode("./a")?.InnerText;
+                        topNews.time = trbsNode.SelectSingleNode("./span")?.InnerText;
                         var commentCount = trbsNode.SelectSingleNode("./span[@class='trbszan']");
                         if (commentCount != null)
                             topNews.commentCount = commentCount.InnerText;
                     }
                 }
             }
-            parse(newsListModel, htmlDoc);
+            parseNewsList(newsListModel, htmlDoc);
             return newsListModel;
         }
 
@@ -64,13 +68,13 @@ namespace The_Paper.Services
                 ,newsListModel.TopCids
                 ,newsListModel.PageIndex + 1
                 ,newsListModel.LastTime);
-            Debug.WriteLine(uri);
+            //Debug.WriteLine(uri);
             HtmlWeb web = new HtmlWeb();
             var htmlDoc = await web.LoadFromWebAsync(uri);
-            parse(newsListModel, htmlDoc);
+            parseNewsList(newsListModel, htmlDoc);
         }
 
-        public void parse(NewsListModel newsListModel, HtmlDocument htmlDoc)
+        public void parseNewsList(NewsListModel newsListModel, HtmlDocument htmlDoc)
         {
             var newsNodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='newsbox']/div[@class='news_li']");
             if (newsNodes == null)
@@ -88,7 +92,7 @@ namespace The_Paper.Services
                     int pageIndex;
                     if ((pageIndex = newsNode.GetAttributeValue("pageIndex", -1)) != -1)
                         newsListModel.PageIndex = pageIndex;
-                    Debug.WriteLine(newsListModel.PageIndex);
+                    //Debug.WriteLine(newsListModel.PageIndex);
                     continue;
                 }
                 News news = new News();
@@ -98,6 +102,8 @@ namespace The_Paper.Services
                     news.cid = news_tu.GetAttributeValue("data-id", string.Empty);
                     news.uri = ChannelsData.main + news_tu.GetAttributeValue("href", string.Empty);
                     news.image = news_tu.SelectSingleNode("./img").GetAttributeValue("src", string.Empty);
+                    if (!news.image.StartsWith("http:"))
+                        news.image = "http:" + news.image;
                 }
                 news.headLine = newsNode.SelectSingleNode(".//h2").SelectSingleNode(".//a").InnerText;
                 news.mainContent = newsNode.SelectSingleNode(".//p").InnerText.Trim();
@@ -108,6 +114,7 @@ namespace The_Paper.Services
                     var commentCount = pdtt.SelectSingleNode("./span[@class='trbszan']");
                     if (commentCount != null)
                         news.commentCount = commentCount.InnerText;
+                    news.time = pdtt.SelectSingleNode("./span")?.InnerText;
                     var isRecommend = pdtt.SelectSingleNode("./div[@class='trbstxt']");
                     if (isRecommend != null)
                         newsListModel.TopCids += news.cid + ',';

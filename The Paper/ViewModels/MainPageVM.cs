@@ -37,14 +37,15 @@ namespace The_Paper.ViewModels
             this.frame = frame;
             this.dispatcher = dispatcher;
             Load();
+            //frame.Navigate(typeof(VideoPage));
         }
 
-        public async Task Load()
+        public async void Load()
         {
             await ChannelsData.generateList();
             ChannelList = new ObservableCollection<Channel>(ChannelsData.channelList);
             await dispatcher.RunAsync(CoreDispatcherPriority.Normal,
-                () => frame.Navigate(typeof(NewsPage), 0));
+                () => frame.Navigate(typeof(VideoPage), 0));
         }
 
         public void Navigate(int index)

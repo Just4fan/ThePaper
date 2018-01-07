@@ -14,6 +14,7 @@ namespace The_Paper.Models
         public string headLine { get; set; }
         public string mainContent { get; set; }
         public string commentCount { get; set; }
+        public string time { get; set; }
         public string tag { get; set; }
     }
 }

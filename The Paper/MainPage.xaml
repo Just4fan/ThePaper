@@ -13,7 +13,8 @@
             <SplitView.Pane>
                 <StackPanel Background="#F5F5F5">
                     <Button Name="Ham" Background="Transparent" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Click="Ham_Click"/>
-                    <ListBox ItemsSource="{Binding ChannelList}" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBox ItemsSource="{Binding ChannelList}"
+                             SelectionChanged="ListBox_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate x:DataType="local2:Channel">
                                 <TextBlock Text="{x:Bind name}" />
@@ -23,7 +24,9 @@
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame Name="mainFrame"/>
+                <RelativePanel>
+                    <Frame Name="mainFrame"/>
+                </RelativePanel>
             </SplitView.Content>
         </SplitView>
     </Grid>

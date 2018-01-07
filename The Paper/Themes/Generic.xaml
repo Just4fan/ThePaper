@@ -23,4 +23,16 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local2:NewsDetailView" xmlns:local2="using:The_Paper.Controls">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local2:NewsDetailView">
+                    <Grid Name="Grid">
+                        
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

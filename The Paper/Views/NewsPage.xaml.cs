@@ -1,24 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.ServiceModel.Channels;
-using System.Threading.Tasks;
-using The_Paper.Data;
-using The_Paper.Http;
 using The_Paper.Models;
-using The_Paper.Services;
 using The_Paper.ViewModels;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
@@ -31,7 +16,6 @@ namespace The_Paper.Views
     public sealed partial class NewsPage : Page
     {
         NewsPageVM newsPageVM;
-        double verticaloffset;
 
         public NewsPage()
         {
@@ -49,7 +33,7 @@ namespace The_Paper.Views
         private void TabView_TabSwitch(object sender, EventArgs e)
         {
             scrollViewer.ChangeView(null, 0, null);
-            newsPageVM.switchTab(sender, e as TabSwitchEventArgs);
+            newsPageVM.LoadTab((e as TabSwitchEventArgs).tabIndex);
         }
 
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
@@ -57,6 +41,18 @@ namespace The_Paper.Views
             if ((sender as ScrollViewer).VerticalOffset + (sender as ScrollViewer).ViewportHeight
                 == (sender as ScrollViewer).ExtentHeight)
                 newsPageVM.LoadMore();
+        }
+
+        private void NewsCards_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Grid.ColumnDefinitions.Clear();
+            Grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            Grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(2, GridUnitType.Star) });
+            NewsDetail.SetValue(Grid.ColumnProperty, 1);
+            newsPageVM.IsOpen = true;
+            NewsDetail.Navigate(typeof(NewsDetailPage), 
+                ((News)((sender as GridView).SelectedItem)).uri);
+            NewsDetail.Visibility = Visibility.Visible;
         }
     }
 }

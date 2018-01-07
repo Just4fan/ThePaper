@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
-    "HtmlAgilityPack": "1.6.10",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+    "HtmlAgilityPack": "1.6.11",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0.10240": {}
   },
   "runtimes": {
     "win10-arm": {},

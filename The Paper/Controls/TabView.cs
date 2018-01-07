@@ -60,7 +60,7 @@ namespace The_Paper.Controls
             DependencyProperty.Register("View",
                 typeof(UIElement),
                 typeof(TabView),
-                new PropertyMetadata(0));
+                new PropertyMetadata(new Grid()));
 
 
 

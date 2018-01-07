@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using The_Paper.Bases.ViewModels;
 using The_Paper.Data;
 using The_Paper.Models;
@@ -20,6 +15,21 @@ namespace The_Paper.ViewModels
         private int curIndex;
         private bool onLoad;
         private NewsListModel newsListModel;
+
+        private bool isOpen;
+
+        public bool IsOpen
+        {
+            get { return isOpen; }
+            set
+            {
+                if (isOpen != value)
+                {
+                    isOpen = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         private Visibility topNewsVisibility;
 
@@ -39,15 +49,13 @@ namespace The_Paper.ViewModels
 
         public News TopNews
         {
-            get { //Debug.WriteLine("Get"); 
-                return topNews;  }
+            get { return topNews;  }
             set
             {
                 if (topNews != value)
                 {
                     topNews = value;
                     NotifyPropertyChanged();
-                    //Debug.WriteLine("Notify");
                 }
             }
         }
@@ -87,32 +95,17 @@ namespace The_Paper.ViewModels
             tabNameList = new ObservableCollection<string>();
             newsPageService = new NewsPageService();
         }
-        public async void init()
-        {
-            foreach (var channel in ChannelsData.channelList[0].subChannel)
-                TabNameList.Add(channel.name);
-            newsListModel = await newsPageService.Load(0, 0);
-            TopNews = newsListModel.TopNews;
-            NewsList = newsListModel.NewsList;
-        }
 
-        public async Task Load(int index, int subindex)
+        public void Load(int index, int subindex)
         {
-            if (onLoad)
-                return;
-            onLoad = true;
-            TopNewsVisibility = Visibility.Visible;
             curIndex = index;
             TabNameList.Clear();
             foreach (var channel in ChannelsData.channelList[index].subChannel)
                 TabNameList.Add(channel.name);
-            newsListModel = await newsPageService.Load(index, subindex);
-            TopNews = newsListModel.TopNews;
-            NewsList = newsListModel.NewsList;
-            onLoad = false;
+            LoadTab(subindex);
         }
 
-        public async Task LoadMore()
+        public async void LoadMore()
         {
             if (onLoad)
                 return;
@@ -121,16 +114,13 @@ namespace The_Paper.ViewModels
             onLoad = false;
         }
 
-        public async void switchTab(object sender, TabSwitchEventArgs args)
+        public async void LoadTab(int index)
         {
-            if (onLoad)
-                return;
-            onLoad = true;
-            TopNewsVisibility = args.tabIndex == 0 ? Visibility.Visible : Visibility.Collapsed;
-            newsListModel = await newsPageService.Load(curIndex , args.tabIndex);
+            TopNewsVisibility = index == 0 ?
+                Visibility.Visible : Visibility.Collapsed;
+            newsListModel = await newsPageService.Load(curIndex, index);
             TopNews = newsListModel.TopNews;
             NewsList = newsListModel.NewsList;
-            onLoad = false;
         }
     }
 }
