@@ -11,6 +11,7 @@ namespace The_Paper.Models
         public const int TYPE_VIDEO = 0x0;
         public const int TYPE_LIVE = 0x1;
 
+        public string id { get; set; }
         public string headLine { get; set; }
         public string mainContent { get; set; }
         public string thumbCount { get; set; }

@@ -35,4 +35,14 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="local2:CommentControl" xmlns:local2="using:The_Paper.Controls">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local2:CommentControl">
+                    <Grid Name="Grid" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

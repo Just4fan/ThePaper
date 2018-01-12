@@ -54,5 +54,17 @@ namespace The_Paper.Views
                 ((News)((sender as GridView).SelectedItem)).uri);
             NewsDetail.Visibility = Visibility.Visible;
         }
+
+        private void topNews_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            Grid.ColumnDefinitions.Clear();
+            Grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            Grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(2, GridUnitType.Star) });
+            NewsDetail.SetValue(Grid.ColumnProperty, 1);
+            newsPageVM.IsOpen = true;
+            NewsDetail.Navigate(typeof(NewsDetailPage),
+                (newsPageVM.TopNews.uri));
+            NewsDetail.Visibility = Visibility.Visible;
+        }
     }
 }

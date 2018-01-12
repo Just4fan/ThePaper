@@ -16,7 +16,11 @@ namespace The_Paper.Services
             VideoDetail videoDetail = new VideoDetail();
             var htmlDoc = await getHtmlDoc(uri);
             var videoTxtNode = htmlDoc.DocumentNode.SelectSingleNode(".//div[starts-with(@class,'video_txt_detail')]");
-            if(videoTxtNode != null)
+            int index = 0;
+            index = uri.LastIndexOf("_");
+            if(index != -1)
+                videoDetail.id = uri.Substring(index + 1);
+            if (videoTxtNode != null)
             {
                 videoDetail.headLine = videoTxtNode.SelectSingleNode("./div[@class='video_txt_t']/h2")?.InnerText;
                 videoDetail.mainContent = videoTxtNode.SelectSingleNode("./div[@class='video_txt_l']/p")?.InnerText.Trim();

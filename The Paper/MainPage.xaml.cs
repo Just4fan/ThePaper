@@ -27,7 +27,7 @@ namespace The_Paper
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = (sender as ListBox).SelectedIndex;
+            int index = (sender as ListView).SelectedIndex;
             switch(index)
             {
                 case 0: case 2: case 3: case 4: case 6:
@@ -38,6 +38,11 @@ namespace The_Paper
                     break;
             }
             
+        }
+
+        private void Ham_Click(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            splitView.IsPaneOpen = !splitView.IsPaneOpen;
         }
     }
 }

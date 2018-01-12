@@ -14,6 +14,7 @@ namespace The_Paper.Models
         public string nodeids { get; set; }
         public string channel_id { get; set; }
         public string update_uri { get; set; }
+        public string icon { get; set; }
 
         public Channel(string name, string uri)
         {
@@ -29,5 +30,12 @@ namespace The_Paper.Models
             this.uri = uri;
             this.nodeids = nodeids;
         }
+    }
+
+    public class Column
+    {
+        public string name { get; set; }
+        public string uri { get; set; }
+        public string column_id { get; set; }
     }
 }

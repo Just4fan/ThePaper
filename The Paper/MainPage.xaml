@@ -9,24 +9,28 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView Name="splitView" DisplayMode="CompactInline" CompactPaneLength="{Binding Path=ActualWidth,ElementName=Ham}">
+        <SplitView Name="splitView" DisplayMode="CompactInline" 
+                   OpenPaneLength="100"
+                   CompactPaneLength="{Binding Path=ActualWidth,ElementName=Ham}">
             <SplitView.Pane>
                 <StackPanel Background="#F5F5F5">
-                    <Button Name="Ham" Background="Transparent" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Click="Ham_Click"/>
-                    <ListBox ItemsSource="{Binding ChannelList}"
+                    <Button Background="Transparent" FontSize="20"
+                            Name="Ham" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Click="Ham_Click"/>
+                    <ListView ItemsSource="{Binding ChannelList}" Background="#F5F5F5"
                              SelectionChanged="ListBox_SelectionChanged">
-                        <ListBox.ItemTemplate>
+                        <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local2:Channel">
-                                <TextBlock Text="{x:Bind name}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="{x:Bind icon}" Margin="-2,0,0,0"/>
+                                    <TextBlock Text="{x:Bind name}" Margin="15,0,0,0" />
+                                </StackPanel>
                             </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackPanel>
             </SplitView.Pane>
             <SplitView.Content>
-                <RelativePanel>
                     <Frame Name="mainFrame"/>
-                </RelativePanel>
             </SplitView.Content>
         </SplitView>
     </Grid>

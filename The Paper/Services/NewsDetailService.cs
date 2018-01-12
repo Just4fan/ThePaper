@@ -17,6 +17,9 @@ namespace The_Paper.Services
             var htmlDoc = await getHtmlDoc(uri);
             NewsDetail newsDetail = new NewsDetail();
             var newsContent = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='newscontent']");
+            int index = uri.LastIndexOf("_");
+            if(index != -1)
+                newsDetail.id = uri.Substring(index + 1);
             foreach(var node in newsContent.ChildNodes)
             {
                 if (node.GetAttributeValue("class", string.Empty).Equals("news_title"))

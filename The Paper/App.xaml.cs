@@ -42,11 +42,13 @@ namespace The_Paper
         /// <param name="e">有关启动请求和过程的详细信息。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            
             var view = ApplicationView.GetForCurrentView();
             view.TitleBar.BackgroundColor = Color.FromArgb(255, 245, 245, 245);
             view.TitleBar.InactiveBackgroundColor = Color.FromArgb(255, 245, 245, 245);
             view.TitleBar.ButtonBackgroundColor = Color.FromArgb(255, 245, 245, 245);
             view.TitleBar.ButtonInactiveBackgroundColor = Color.FromArgb(255, 245, 245, 245);
+            
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

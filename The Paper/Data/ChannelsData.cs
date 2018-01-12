@@ -3,15 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Xml.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using The_Paper.Models;
+using System.IO;
+using Windows.Storage;
 
 namespace The_Paper.Data
 {
     public class ChannelsData
     {
         public static string main = @"http://www.thepaper.cn/";
+        public const string commentURL = @"http://www.thepaper.cn/newDetail_commt.jsp?";
         public static List<Channel> channelList = new List<Channel>();
 
         public static async Task<bool> generateList()
@@ -57,6 +61,14 @@ namespace The_Paper.Data
                 //Debug.WriteLine(nodeids);
                 channel.subChannel[0].nodeids = nodeids;
                 channelList.Add(channel);
+            }
+            StorageFile storageFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Assets/Channels.xml"));
+            Stream stream = await storageFile.OpenStreamForReadAsync();
+            XDocument xDocument = XDocument.Load(stream);
+            var collection = xDocument.Element("Channels").Elements();
+            for (int i = 0; i < collection.Count(); i++)
+            {
+                channelList[i].icon = (string)collection.ElementAt(i).Element("Channel-Icon").Element("Icon-Text");
             }
             return true;
         }

@@ -43,7 +43,8 @@ namespace The_Paper.Services
                 var bdNode = rtNode.SelectSingleNode(".//div[@class='pdtt_rtbd']");
                 if (bdNode != null)
                 {
-                    topNews.headLine = bdNode.SelectSingleNode("./h2/a").InnerText;
+                    topNews.headLine = bdNode.SelectSingleNode("./h2/a")?.InnerText;
+                    topNews.uri = ChannelsData.main + bdNode.SelectSingleNode("./h2/a")?.GetAttributeValue("href", string.Empty);
                     topNews.mainContent = bdNode.SelectSingleNode("./p").InnerText;
                     var trbsNode = rtNode.SelectSingleNode(".//div[@class='pdtt_trbs']");
                     if (trbsNode != null)

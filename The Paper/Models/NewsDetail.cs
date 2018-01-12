@@ -12,6 +12,7 @@ namespace The_Paper.Models
         public string about { get; set; }
         public string time { get; set; }
         public string editor { get; set; }
+        public string id { get; set; }
         public List<NewsContent> content { get; set; }
 
         public NewsDetail()

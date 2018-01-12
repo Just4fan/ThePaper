@@ -8,6 +8,10 @@
     xmlns:local2="using:The_Paper.Models"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <ResourceDictionary Source="/Resources/ControlStyle.xaml" />
+    </Page.Resources>
+
     <Grid Background="#F0F0F0">
         <Grid>
             <Grid.RowDefinitions>
@@ -73,6 +77,7 @@
                 </MediaElement>
             </Grid>
             <GridView SelectionChanged="GridView_SelectionChanged"
+                      ItemContainerStyle="{StaticResource NewsListItemStyle}"
                 ItemsSource="{Binding VideoList}" Grid.Row="1">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local2:Video">

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Channels>
+  <Channel>
+    <Channel-Name>精选</Channel-Name>
+    <Channel-Id>25949</Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE18B;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+  <Channel>
+    <Channel-Name>视频</Channel-Name>
+    <Channel-Id>26916</Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/26916</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE20A;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+  <Channel>
+    <Channel-Name>时事</Channel-Name>
+    <Channel-Id>25950</Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/25950</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE774;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+  <Channel>
+    <Channel-Name>财经</Channel-Name>
+    <Channel-Id>25951</Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/25951</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE825;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+  <Channel>
+    <Channel-Name>思想</Channel-Name>
+    <Channel-Id>25952</Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/25952</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE82F;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+    <Channel>
+    <Channel-Name>问政</Channel-Name>
+    <Channel-Id></Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/gov_publish.jsp</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE774;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+  <Channel>
+    <Channel-Name>生活</Channel-Name>
+    <Channel-Id>25953</Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/25953</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE10F;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+  <Channel>
+    <Channel-Name>问吧</Channel-Name>
+    <Channel-Id></Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/ask_index.jsp</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE11B;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+  <Channel>
+    <Channel-Name>订阅</Channel-Name>
+    <Channel-Id>-1</Channel-Id>
+    <Channel-Url>http://www.thepaper.cn/channel_-1</Channel-Url>
+    <Channel-Icon>
+      <Icon-Font>Segoe MDL2 Assets</Icon-Font>
+      <Icon-Text>&#xE815;</Icon-Text>
+    </Channel-Icon>
+  </Channel>
+</Channels>

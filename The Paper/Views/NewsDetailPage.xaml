@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:The_Paper.Views"
     xmlns:local1="using:The_Paper.Converters"
+    xmlns:uc="using:The_Paper.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local2="using:The_Paper.Controls"
@@ -56,6 +57,7 @@
                            Foreground="Gray"
                            RelativePanel.Below="newsContentBorder"
                            Text="{Binding NewsDetail.editor}" />
+                <uc:CommentControl RelativePanel.Below="Editor" Margin="20,10,20,10" />
             </RelativePanel>
         </ScrollViewer>
         <Grid Background="#F5F5F5" 

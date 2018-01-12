@@ -88,11 +88,12 @@
             <local3:TabView.View>
                 <ScrollViewer Name="scrollViewer" ViewChanged="ScrollViewer_ViewChanged">
                     <RelativePanel Background="#F0F0F0">
-                        <GridViewItem Name="topNews">
+                        <GridViewItem Name="topNews" Style="{StaticResource NewsListItemStyle}"
+                                      Tapped="topNews_Tapped">
                             <RelativePanel Visibility="{Binding TopNewsVisibility}"
                                            Name="topNewsPanel"
                                         Margin="10,10,10,10"
-                                        Background="#FAFAFA" >
+                                        Background="Transparent" >
                                 <Image Name="topNewsImage" 
                                         Source="{Binding TopNews.image}"
                                         Margin="10,10,10,10"  />
@@ -121,11 +122,12 @@
                         </GridViewItem>
                         <GridView Name="NewsCards" ItemsSource="{Binding NewsList}"
                                 SelectionChanged="NewsCards_SelectionChanged"
+                                ItemContainerStyle="{StaticResource NewsListItemStyle}"
                                 Background="#F0F0F0" RelativePanel.Below="topNews">
                             <GridView.ItemTemplate>
                                 <DataTemplate x:DataType="local2:News">
                                     <UserControl>
-                                        <RelativePanel Name="NewsCard" Margin="10,10,10,10" Background="#FAFAFA">
+                                        <RelativePanel Name="NewsCard" Margin="10,10,10,10" Background="Transparent">
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup>
                                                     <VisualState x:Name="CardWide">
