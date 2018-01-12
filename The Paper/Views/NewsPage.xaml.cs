@@ -30,10 +30,10 @@ namespace The_Paper.Views
             newsPageVM.Load((int)e.Parameter, 0);
         }
 
-        private void TabView_TabSwitch(object sender, EventArgs e)
+        private async void TabView_TabSwitch(object sender, EventArgs e)
         {
             scrollViewer.ChangeView(null, 0, null);
-            newsPageVM.LoadTab((e as TabSwitchEventArgs).tabIndex);
+            await newsPageVM.LoadTab((e as TabSwitchEventArgs).tabIndex);
         }
 
         private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
@@ -51,7 +51,7 @@ namespace The_Paper.Views
             NewsDetail.SetValue(Grid.ColumnProperty, 1);
             newsPageVM.IsOpen = true;
             NewsDetail.Navigate(typeof(NewsDetailPage), 
-                ((News)((sender as GridView).SelectedItem)).uri);
+                ((News)((sender as GridView).SelectedItem))?.uri);
             NewsDetail.Visibility = Visibility.Visible;
         }
 

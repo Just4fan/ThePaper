@@ -61,7 +61,7 @@ namespace The_Paper.Services
             return newsListModel;
         }
 
-        public async Task LoadMore(NewsListModel newsListModel)
+        public async Task<bool> LoadMore(NewsListModel newsListModel)
         {
             string uri = string.Format("{0}nodeids={1}&topCids={2}&pageIndex={3}&lastTime={4}"
                 ,newsListModel.UpdateUri
@@ -69,20 +69,22 @@ namespace The_Paper.Services
                 ,newsListModel.TopCids
                 ,newsListModel.PageIndex + 1
                 ,newsListModel.LastTime);
-            //Debug.WriteLine(uri);
             HtmlWeb web = new HtmlWeb();
             var htmlDoc = await web.LoadFromWebAsync(uri);
-            parseNewsList(newsListModel, htmlDoc);
+            if (parseNewsList(newsListModel, htmlDoc) == 0)
+                return false;
+            return true;
         }
 
-        public void parseNewsList(NewsListModel newsListModel, HtmlDocument htmlDoc)
+        public int parseNewsList(NewsListModel newsListModel, HtmlDocument htmlDoc)
         {
+            int count = 0;
             var newsNodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='newsbox']/div[@class='news_li']");
             if (newsNodes == null)
             {
                 newsNodes = htmlDoc.DocumentNode.SelectNodes("//div[@class='news_li'] | //div[@lasttime]");
                 if (newsNodes == null)
-                    return;
+                    return 0;
             }
             foreach (var newsNode in newsNodes)
             {
@@ -121,7 +123,9 @@ namespace The_Paper.Services
                         newsListModel.TopCids += news.cid + ',';
                 }
                 newsListModel.NewsList.Add(news);
+                ++count;
             }
+            return count;
         }
 
         public async void WriteFileFromStream(Stream stream, StorageFolder folder, string filename)

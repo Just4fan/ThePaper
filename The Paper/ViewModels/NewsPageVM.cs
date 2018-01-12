@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using The_Paper.Bases.ViewModels;
 using The_Paper.Data;
 using The_Paper.Models;
@@ -15,6 +17,51 @@ namespace The_Paper.ViewModels
         private int curIndex;
         private bool onLoad;
         private NewsListModel newsListModel;
+
+        private string _loadStatus;
+
+        public string LoadStatus
+        {
+            get { return _loadStatus; }
+            set
+            {
+                if (_loadStatus != value)
+                {
+                    _loadStatus = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private bool _loaded;
+
+        public bool Loaded
+        {
+            get { return _loaded; }
+            set
+            {
+                if (_loaded != value)
+                {
+                    _loaded = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private bool _hasTopNews;
+
+        public bool HasTopNews
+        {
+            get { return _hasTopNews; }
+            set
+            {
+                if (_hasTopNews != value)
+                {
+                    _hasTopNews = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
 
         private bool isOpen;
 
@@ -96,13 +143,13 @@ namespace The_Paper.ViewModels
             newsPageService = new NewsPageService();
         }
 
-        public void Load(int index, int subindex)
+        public async void Load(int index, int subindex)
         {
             curIndex = index;
             TabNameList.Clear();
             foreach (var channel in ChannelsData.channelList[index].subChannel)
                 TabNameList.Add(channel.name);
-            LoadTab(subindex);
+            await LoadTab(subindex);
         }
 
         public async void LoadMore()
@@ -110,17 +157,29 @@ namespace The_Paper.ViewModels
             if (onLoad)
                 return;
             onLoad = true;
-            await newsPageService.LoadMore(newsListModel);
+            LoadStatus = "正在加载...";
+            if (await newsPageService.LoadMore(newsListModel))
+                LoadStatus = string.Empty;
+            else
+                LoadStatus = "没有更多数据了~";
             onLoad = false;
         }
 
-        public async void LoadTab(int index)
+        public async Task LoadTab(int index)
         {
-            TopNewsVisibility = index == 0 ?
-                Visibility.Visible : Visibility.Collapsed;
+            onLoad = true;
+            TopNews = null;
+            NewsList?.Clear();
+            HasTopNews = false;
+            Loaded = false;
             newsListModel = await newsPageService.Load(curIndex, index);
             TopNews = newsListModel.TopNews;
             NewsList = newsListModel.NewsList;
+            HasTopNews = index == 0 ?
+                true : false;
+            Loaded = true;
+            GC.Collect();
+            onLoad = false;
         }
     }
 }

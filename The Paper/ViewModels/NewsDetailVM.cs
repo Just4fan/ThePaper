@@ -85,6 +85,8 @@ namespace The_Paper.ViewModels
 
         public async void Load(string uri)
         {
+            if (uri == string.Empty || uri == null)
+                return;
             Loaded = false;
             NewsDetail = await newsDetailService.Load(uri);
             await commentService.InitAsync(string.Format("{0}contid={1}&_={2}",

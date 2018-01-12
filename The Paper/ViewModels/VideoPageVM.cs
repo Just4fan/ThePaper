@@ -78,6 +78,11 @@ namespace The_Paper.ViewModels
             //await new NewsDetailService().Load(@"http://www.thepaper.cn/newsDetail_forward_1931546");
         }
 
+        public async void PlayTop()
+        {
+            VideoDetail = await videoDetailService.Load(TopVideo.uri);
+        }
+
         public async void Play(Video video)
         {
             VideoDetail = await videoDetailService.Load(video.uri);

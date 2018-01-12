@@ -7,10 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local2="using:The_Paper.Models"
     xmlns:local3="using:The_Paper.Controls"
+    xmlns:local4="using:The_Paper.Converters"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <ResourceDictionary Source="/Resources/ControlStyle.xaml" />
+        <ResourceDictionary>
+            <local4:BoolToVisibilityConverter x:Key="BTVC" />
+            <local4:BoolInvertConverter x:Key="BIC" />
+        </ResourceDictionary>
     </Page.Resources>
 
     <Grid Name="Grid">
@@ -89,8 +93,9 @@
                 <ScrollViewer Name="scrollViewer" ViewChanged="ScrollViewer_ViewChanged">
                     <RelativePanel Background="#F0F0F0">
                         <GridViewItem Name="topNews" Style="{StaticResource NewsListItemStyle}"
+                                      Visibility="{Binding Path=HasTopNews,Converter={StaticResource BTVC}}"
                                       Tapped="topNews_Tapped">
-                            <RelativePanel Visibility="{Binding TopNewsVisibility}"
+                            <RelativePanel
                                            Name="topNewsPanel"
                                         Margin="10,10,10,10"
                                         Background="Transparent" >
@@ -221,7 +226,7 @@
                                 FontSize="14" 
                                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                                 RelativePanel.Below="NewsCards"
-                                Text="正在加载..." 
+                                Text="{Binding LoadStatus}" 
                                 Margin="0,0,0,10"
                                 Foreground="Gray"/>
                     </RelativePanel>
@@ -229,5 +234,6 @@
             </local3:TabView.View>
         </local3:TabView>
         <Frame Name="NewsDetail" Visibility="Collapsed"/>
+        <ProgressRing Width="75" Height="75" IsActive="{Binding Path=Loaded,Converter={StaticResource BIC}}" />
     </Grid>
 </Page>

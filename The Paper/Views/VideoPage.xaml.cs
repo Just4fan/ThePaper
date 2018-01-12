@@ -32,9 +32,9 @@ namespace The_Paper.Views
             this.DataContext = videoPageVM;
         }
 
-        private async void playButton_Tapped(object sender, TappedRoutedEventArgs e)
+        private void playButton_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            mediaElement.Play();
+            videoPageVM.PlayTop();
         }
 
         private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)

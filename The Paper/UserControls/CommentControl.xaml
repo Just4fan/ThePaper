@@ -15,7 +15,8 @@
     </UserControl.Resources>
     
     <RelativePanel Name="RelativePanel">
-        <TextBox Name="EditBox" Margin="0,0,0,10" Height="100" Width="{Binding Path=ActualWidth,ElementName=HotCommentBox}" />
+        <TextBox Name="EditBox" PlaceholderText="说点啥呢~"
+                 Margin="0,0,0,10" Height="100" Width="{Binding Path=ActualWidth,ElementName=HotCommentBox}" />
         <Button Name="ReplyBtn" Margin="0,0,0,10" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="EditBox">回复</Button>
         <TextBlock Name="Hot" Text="按热度" FontSize="14" FontWeight="Bold" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="ReplyBtn"/>
         <ListBox Name="HotCommentBox" ItemsSource="{Binding HotComments}" RelativePanel.Below="Hot" ItemContainerStyle="{StaticResource CommentListBoxStyle}" >
