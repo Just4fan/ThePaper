@@ -8,7 +8,7 @@ namespace The_Paper.Models
 {
     public class Channel
     {
-        public List<Channel> subChannel;
+        public List<Column> columns;
         public string name { get; set; }
         public string uri { get; set; }
         public string nodeids { get; set; }
@@ -18,17 +18,22 @@ namespace The_Paper.Models
 
         public Channel(string name, string uri)
         {
-            subChannel = new List<Channel>();
+            columns = new List<Column>();
             this.name = name;
             this.uri = uri;
         }
 
         public Channel(string name, string uri, string nodeids)
         {
-            subChannel = new List<Channel>();
+            columns = new List<Column>();
             this.name = name;
             this.uri = uri;
             this.nodeids = nodeids;
+        }
+
+        public Channel()
+        {
+            columns = new List<Column>();
         }
     }
 

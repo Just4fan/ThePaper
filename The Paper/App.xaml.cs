@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using The_Paper.Data;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -40,7 +41,7 @@ namespace The_Paper
         /// 将在启动应用程序以打开特定文件等情况下使用。
         /// </summary>
         /// <param name="e">有关启动请求和过程的详细信息。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             
             var view = ApplicationView.GetForCurrentView();
@@ -48,7 +49,7 @@ namespace The_Paper
             view.TitleBar.InactiveBackgroundColor = Color.FromArgb(255, 245, 245, 245);
             view.TitleBar.ButtonBackgroundColor = Color.FromArgb(255, 245, 245, 245);
             view.TitleBar.ButtonInactiveBackgroundColor = Color.FromArgb(255, 245, 245, 245);
-            
+            await ChannelsData.InitAsync();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {

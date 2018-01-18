@@ -14,9 +14,9 @@ namespace The_Paper.ViewModels
     {
         private NewsPageService newsPageService;
         private News topNews;
-        private int curIndex;
         private bool onLoad;
         private NewsListModel newsListModel;
+        private Channel channel;
 
         private string _loadStatus;
 
@@ -137,19 +137,20 @@ namespace The_Paper.ViewModels
             }
         }
 
-        public NewsPageVM()
+        public NewsPageVM(Channel channel)
         {
             tabNameList = new ObservableCollection<string>();
             newsPageService = new NewsPageService();
+            this.channel = channel;
+            Load(0);
         }
 
-        public async void Load(int index, int subindex)
+        public async void Load(int columnIdx)
         {
-            curIndex = index;
             TabNameList.Clear();
-            foreach (var channel in ChannelsData.channelList[index].subChannel)
-                TabNameList.Add(channel.name);
-            await LoadTab(subindex);
+            foreach (var column in channel.columns)
+                TabNameList.Add(column.name);
+            await LoadTab(columnIdx);
         }
 
         public async void LoadMore()
@@ -172,7 +173,7 @@ namespace The_Paper.ViewModels
             NewsList?.Clear();
             HasTopNews = false;
             Loaded = false;
-            newsListModel = await newsPageService.Load(curIndex, index);
+            newsListModel = await newsPageService.Load(channel, index);
             TopNews = newsListModel.TopNews;
             NewsList = newsListModel.NewsList;
             HasTopNews = index == 0 ?

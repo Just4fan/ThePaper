@@ -1,7 +1,10 @@
-﻿using The_Paper.ViewModels;
+﻿using System.Diagnostics;
+using The_Paper.Data;
+using The_Paper.ViewModels;
 using The_Paper.Views;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -16,7 +19,12 @@ namespace The_Paper
         public MainPage()
         {
             this.InitializeComponent();
-            mainPageVM = new MainPageVM(mainFrame, Dispatcher);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            mainPageVM = new MainPageVM();
             this.DataContext = mainPageVM;
         }
 
@@ -31,10 +39,10 @@ namespace The_Paper
             switch(index)
             {
                 case 0: case 2: case 3: case 4: case 6:
-                    mainPageVM.Navigate(index);
+                    mainFrame.Navigate(typeof(NewsPage), ChannelsData.Channels[index]);
                     break;
                 case 1:
-                    mainFrame.Navigate(typeof(VideoPage));
+                    mainFrame.Navigate(typeof(VideoPage), ChannelsData.Channels[index]);
                     break;
             }
             

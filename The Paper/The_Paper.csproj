@@ -103,12 +103,20 @@
     <Compile Include="Controls\TabView.cs" />
     <Compile Include="Converters\NewsDetailConverter.cs" />
     <Compile Include="Data\ChannelsData.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Models\Comments.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Services\APIService.cs" />
+    <Compile Include="Services\LoginService.cs" />
+    <Compile Include="ViewModels\LoginPageVM.cs" />
+    <Compile Include="ViewModels\VideoDetailVM.cs" />
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\Comment.cs" />
-    <Compile Include="Models\CommentList.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\NewsDetail.cs" />
     <Compile Include="Models\NewsListModel.cs" />
@@ -138,6 +146,9 @@
     </Compile>
     <Compile Include="Views\NewsPage.xaml.cs">
       <DependentUpon>NewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideoDetailPage.xaml.cs">
+      <DependentUpon>VideoDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VideoPage.xaml.cs">
       <DependentUpon>VideoPage.xaml</DependentUpon>
@@ -189,7 +200,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -215,6 +230,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideoDetailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

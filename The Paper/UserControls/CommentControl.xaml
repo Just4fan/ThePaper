@@ -18,11 +18,14 @@
         <TextBox Name="EditBox" PlaceholderText="说点啥呢~"
                  Margin="0,0,0,10" Height="100" Width="{Binding Path=ActualWidth,ElementName=HotCommentBox}" />
         <Button Name="ReplyBtn" Margin="0,0,0,10" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="EditBox">回复</Button>
-        <TextBlock Name="Hot" Text="按热度" FontSize="14" FontWeight="Bold" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="ReplyBtn"/>
-        <ListBox Name="HotCommentBox" ItemsSource="{Binding HotComments}" RelativePanel.Below="Hot" ItemContainerStyle="{StaticResource CommentListBoxStyle}" >
+        <TextBlock Name="Hot" Text="按热度" FontSize="14"
+                   Visibility="{Binding HasHotComments}"
+                   FontWeight="Bold" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="ReplyBtn"/>
+        <ListBox Name="HotCommentBox" ItemsSource="{Binding HotComments}" 
+                 RelativePanel.Below="Hot" ItemContainerStyle="{StaticResource CommentListBoxStyle}" >
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="local2:Comment">
-                    <RelativePanel Name="HotCommentPanel" Margin="10,10,10,10">
+                    <RelativePanel Name="HotCommentPanel" Margin="10,10,10,10" Background="Transparent">
                         <StackPanel Name="HotAvator">
                             <Ellipse Width="50" Height="50">
                                 <Ellipse.Fill>
@@ -36,9 +39,9 @@
                             IsItemClickEnabled="False" Name="HotFloor" RelativePanel.RightOf="HotAvator" RelativePanel.Below="HotUserName">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local2:CommentFloor">
-                                    <StackPanel Orientation="Vertical" Margin="5,5,5,5">
-                                        <TextBlock Text="{x:Bind userName}" FontSize="12" Foreground="Blue"/>
-                                        <TextBlock Text="{x:Bind content}" FontSize="14" MaxLines="2" TextWrapping="WrapWholeWords"/>
+                                    <StackPanel Orientation="Vertical" >
+                                        <TextBlock Text="{x:Bind userName}" FontSize="12" Foreground="Blue" Margin="5,5,5,5"/>
+                                        <TextBlock Text="{x:Bind content}" FontSize="14" MaxLines="2" TextWrapping="WrapWholeWords" Margin="5,5,5,5"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -48,13 +51,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBlock Name="New" Text="按时间" FontSize="14" FontWeight="Bold" RelativePanel.Below="HotCommentBox"
+        <TextBlock Name="New" Text="按时间" FontSize="14" FontWeight="Bold" 
+                   Visibility="{Binding HasNewComments}"
+                   RelativePanel.Below="HotCommentBox"
                    RelativePanel.AlignLeftWithPanel="True" />
         <ListBox Name="CommentBox" RelativePanel.Below="New" ItemContainerStyle="{StaticResource CommentListBoxStyle}"
                  ItemsSource="{Binding NewComments}">
             <ListBox.ItemTemplate>
                 <DataTemplate x:DataType="local2:Comment">
-                    <RelativePanel Name="CommentPanel" Margin="10,10,10,10">
+                    <RelativePanel Name="CommentPanel" Margin="10,10,10,10" Background="Transparent">
                         <StackPanel Name="Avator">
                             <Ellipse Width="50" Height="50">
                                 <Ellipse.Fill>
@@ -68,9 +73,9 @@
                             IsItemClickEnabled="False" Name="Floor" RelativePanel.RightOf="Avator" RelativePanel.Below="UserName">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="local2:CommentFloor">
-                                    <StackPanel Orientation="Vertical" Margin="5,5,5,5">
-                                        <TextBlock Text="{x:Bind userName}" FontSize="12" Foreground="Blue"/>
-                                        <TextBlock Text="{x:Bind content}" FontSize="14" MaxLines="2" TextWrapping="WrapWholeWords"/>
+                                    <StackPanel Orientation="Vertical" >
+                                        <TextBlock Text="{x:Bind userName}" FontSize="12" Foreground="Blue" Margin="5,5,5,5"/>
+                                        <TextBlock Text="{x:Bind content}" FontSize="14" MaxLines="2" TextWrapping="WrapWholeWords" Margin="5,5,5,5"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

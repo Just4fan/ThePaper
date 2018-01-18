@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="The_Paper.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:The_Paper.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <RelativePanel>
+            <TextBlock Text="用户名"  Name="LabelUsername"/>
+            <TextBox Name="Username" RelativePanel.RightOf="LabelUsername" />
+            <TextBlock Text="密码" Name="LabelPassword" RelativePanel.Below="LabelUsername"/>
+            <PasswordBox Name="Password" RelativePanel.RightOf="LabelPassword" RelativePanel.Below="Username" />
+        </RelativePanel>
+    </Grid>
+</Page>

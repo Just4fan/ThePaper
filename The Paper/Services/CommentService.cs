@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,55 @@ namespace The_Paper.Services
         public async Task InitAsync(string uri)
         {
             htmlDoc = await getHtmlDoc(uri);
+        }
+
+        public async Task<Comments> GetCommentsAsync(string url)
+        {
+            Comments comments = new Comments();
+            var htmlDoc = await getHtmlDoc(APIService.apiService.GetCommentURL(url, comments));
+            int index = url.LastIndexOf('_');
+            comments.hotIds = string.Empty;
+            comments.pageidx = 1;
+            var commentTitles = htmlDoc.DocumentNode.SelectNodes(".//div[@class='comment_title']");
+            if (commentTitles == null)
+                return comments;
+            foreach(var title in commentTitles)
+            {
+                if(title.InnerText.Equals("热评论"))
+                {
+                    var commentNode = title.NextSibling;
+                    while (commentNode != null)
+                    {
+                        string attr = commentNode.GetAttributeValue("class", string.Empty);
+                        if (attr.Equals("comment_title"))
+                            break;
+                        if (attr.Equals("comment_que"))
+                        {
+                            Comment comment = GetComment(commentNode);
+                            comments.hotComments.Add(comment);
+                            comments.hotIds += comment.commentID.Substring("commentHot".Length) + ',';
+                        }
+                        commentNode = commentNode.NextSibling;
+                    }
+                }
+                else if(title.InnerText.Equals("新评论"))
+                {
+                    var commentNode = title.NextSibling;
+                    while (commentNode != null)
+                    {
+                        string attr = commentNode.GetAttributeValue("class", string.Empty);
+                        if (attr.Equals("comment_que"))
+                        {
+                            Comment comment = GetComment(commentNode);
+                            comments.newComments.Add(comment);
+                        }
+                        commentNode = commentNode.NextSibling;
+                    }
+                    comments.startId = htmlDoc.DocumentNode.SelectSingleNode("//div[@startid]")?
+                        .GetAttributeValue("startId", string.Empty);
+                }
+            }
+            return comments;
         }
 
         public ObservableCollection<Comment> LoadHot()
@@ -101,6 +151,22 @@ namespace The_Paper.Services
                     .InnerText;
             }
             return comment;
+        }
+
+        public async Task<bool> LoadMoreAsync(Comments comments)
+        {
+            string load = APIService.apiService.LoadMoreCommentURL(comments);
+            Debug.WriteLine(load);
+            var htmlDoc = await getHtmlDoc(load);
+            var commentsNode = htmlDoc.DocumentNode.SelectNodes("./div[@class='comment_que']");
+            if (commentsNode == null || commentsNode.Count == 0)
+                return false;
+            foreach(var node in commentsNode)
+                comments.newComments.Add(GetComment(node));
+            comments.startId = htmlDoc.DocumentNode.SelectSingleNode("//div[@startid]")?
+                .GetAttributeValue("startId", string.Empty);
+            comments.pageidx++;
+            return true;
         }
     }
 }

@@ -28,7 +28,12 @@ namespace The_Paper.Views
         public VideoPage()
         {
             this.InitializeComponent();
-            videoPageVM = new VideoPageVM();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            videoPageVM = new VideoPageVM(e.Parameter as Channel);
             this.DataContext = videoPageVM;
         }
 
@@ -39,8 +44,35 @@ namespace The_Paper.Views
 
         private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mediaElement.Visibility = Visibility.Visible;
-            videoPageVM.Play((Video)(sender as GridView).SelectedItem);
+            if ((sender as GridView).SelectedItem != null)
+            {
+                videoPageVM.Play((Video)(sender as GridView).SelectedItem);
+                VideoDetail.Navigate(typeof(VideoDetailPage), ((sender as GridView).SelectedItem as Video).uri);
+            }
+        }
+
+        private async void TabView_TabSwitch(object sender, EventArgs e)
+        {
+            await videoPageVM.LoadColumn((e as TabSwitchEventArgs).tabIndex);
+        }
+
+        private void mediaElement_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            EnterAnim.Begin();
+            EnterAnim.Completed += (sender1, e1) => VideoInfo.Visibility = Visibility.Visible;
+        }
+
+        private void mediaElement_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            ExitAnim.Begin();
+            EnterAnim.Completed += (sender1, e1) => VideoInfo.Visibility = Visibility.Collapsed;
+        }
+
+        private void ScrollViewer_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
+        {
+            if ((sender as ScrollViewer).VerticalOffset + (sender as ScrollViewer).ViewportHeight
+                == (sender as ScrollViewer).ExtentHeight)
+                videoPageVM.LoadMore();
         }
     }
 }

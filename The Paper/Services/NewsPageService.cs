@@ -16,9 +16,9 @@ namespace The_Paper.Services
 {
     public class NewsPageService
     {
-        private List<Channel> channelList = ChannelsData.channelList;
+        private List<Channel> channelList = ChannelsData.Channels;
 
-        public async Task<NewsListModel> Load(int index, int subIndex)
+        public async Task<NewsListModel> Load(Channel channel, int columnIdx)
         {
             NewsListModel newsListModel = new NewsListModel();
             ObservableCollection<News> newsList = new ObservableCollection<News>();
@@ -26,9 +26,9 @@ namespace The_Paper.Services
             News topNews = new News();
             newsListModel.TopNews = topNews;
             newsListModel.NewsList = newsList;
-            newsListModel.NodeIds = ChannelsData.channelList[index].subChannel[subIndex].nodeids;
-            newsListModel.UpdateUri = ChannelsData.channelList[index].update_uri;
-            var htmlDoc = await web.LoadFromWebAsync(channelList[index].subChannel[subIndex].uri); 
+            newsListModel.NodeIds = channel.columns[columnIdx].column_id;
+            newsListModel.UpdateUri = channel.update_uri;
+            var htmlDoc = await web.LoadFromWebAsync(channel.columns[columnIdx].uri); 
             var ltNode = htmlDoc.DocumentNode.SelectSingleNode("//div[@class='main_lt']//div[@class='pdtt_lt']");
             if (ltNode != null)
             {
@@ -63,12 +63,7 @@ namespace The_Paper.Services
 
         public async Task<bool> LoadMore(NewsListModel newsListModel)
         {
-            string uri = string.Format("{0}nodeids={1}&topCids={2}&pageIndex={3}&lastTime={4}"
-                ,newsListModel.UpdateUri
-                ,newsListModel.NodeIds
-                ,newsListModel.TopCids
-                ,newsListModel.PageIndex + 1
-                ,newsListModel.LastTime);
+            string uri = APIService.apiService.GetURL(newsListModel);
             HtmlWeb web = new HtmlWeb();
             var htmlDoc = await web.LoadFromWebAsync(uri);
             if (parseNewsList(newsListModel, htmlDoc) == 0)

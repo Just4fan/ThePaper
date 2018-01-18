@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Channels>
   <Channel>
     <Channel-Name>精选</Channel-Name>
@@ -8,6 +8,20 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE18B;</Icon-Text>
     </Channel-Icon>
+    <Channel-More>
+      <Url>http://www.thepaper.cn/load_chosen.jsp?</Url>
+      <Parameter>nodeids</Parameter>
+      <Parameter>topCids</Parameter>
+      <Parameter>pageidx</Parameter>
+      <Parameter>lastTime</Parameter>
+    </Channel-More>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/</Column-Url>
+        <Column-Id>25949</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
   <Channel>
     <Channel-Name>视频</Channel-Name>
@@ -17,6 +31,88 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE20A;</Icon-Text>
     </Channel-Icon>
+    <Channel-More>
+      <Url>http://www.thepaper.cn/load_video_chosen.jsp?</Url>
+      <Parameter>channelID</Parameter>
+      <Parameter>pageidx</Parameter>
+    </Channel-More>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/channel_26916</Column-Url>
+        <Column-Id>26916</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>上直播</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26912</Column-Url>
+        <Column-Id>26912</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>@所有人</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26918</Column-Url>
+        <Column-Id>26918</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>中国政前方</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26919</Column-Url>
+        <Column-Id>26919</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>温度计</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26965</Column-Url>
+        <Column-Id>26965</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>大都会</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26906</Column-Url>
+        <Column-Id>26906</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>湃客科技</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26907</Column-Url>
+        <Column-Id>26907</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>一级视场</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26908</Column-Url>
+        <Column-Id>26908</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>World湃</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_27260</Column-Url>
+        <Column-Id>27260</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>追光灯</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26909</Column-Url>
+        <Column-Id>26909</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>运动装</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26910</Column-Url>
+        <Column-Id>26910</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>围观</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26911</Column-Url>
+        <Column-Id>26911</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>七环视频</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26913</Column-Url>
+        <Column-Id>26913</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>健寻记</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26914</Column-Url>
+        <Column-Id>26914</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>场所</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26915</Column-Url>
+        <Column-Id>26915</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
   <Channel>
     <Channel-Name>时事</Channel-Name>
@@ -26,6 +122,135 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE774;</Icon-Text>
     </Channel-Icon>
+    <Channel-More>
+      <Url>http://www.thepaper.cn/load_index.jsp?</Url>
+      <Parameter>nodeids</Parameter>
+      <Parameter>topCids</Parameter>
+      <Parameter>pageidx</Parameter>
+      <Parameter>lastTime</Parameter>
+    </Channel-More>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/channel_25950</Column-Url>
+        <Column-Id>25462,25488,25489,25490,25423,25426,25424,25463,25491,25428,27604,25464,25425,25429,25481,25430,25678,25427,25422,25487,25634,25635,25600,</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>中国政库</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25462</Column-Url>
+        <Column-Id>25462</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>中南海</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25488</Column-Url>
+        <Column-Id>25488</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>舆论场</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25489</Column-Url>
+        <Column-Id>25489</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>打虎记</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25490</Column-Url>
+        <Column-Id>25490</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>人事风向</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25423</Column-Url>
+        <Column-Id>25423</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>法治中国</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25426</Column-Url>
+        <Column-Id>25426</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>一号专案</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25424</Column-Url>
+        <Column-Id>25424</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>港台来信</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25463</Column-Url>
+        <Column-Id>25463</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>长三角政商</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25491</Column-Url>
+        <Column-Id>25491</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>直击现场</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25428</Column-Url>
+        <Column-Id>25428</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>暖闻</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_27604</Column-Url>
+        <Column-Id>27604</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>知食分子</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25464</Column-Url>
+        <Column-Id>25464</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>绿政公署</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25425</Column-Url>
+        <Column-Id>25425</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>澎湃国际</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25429</Column-Url>
+        <Column-Id>25429</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>外交学人</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25481</Column-Url>
+        <Column-Id>25481</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>澎湃防务</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25430</Column-Url>
+        <Column-Id>25430</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>唐人街</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25678</Column-Url>
+        <Column-Id>25678</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>澎湃人物</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25427</Column-Url>
+        <Column-Id>25427</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>浦江头条</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25422</Column-Url>
+        <Column-Id>25422</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>教育家</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25487</Column-Url>
+        <Column-Id>25487</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>全景现场</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25634</Column-Url>
+        <Column-Id>25634</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>美数课</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25635</Column-Url>
+        <Column-Id>25635</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>快看</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25600</Column-Url>
+        <Column-Id>25600</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
   <Channel>
     <Channel-Name>财经</Channel-Name>
@@ -35,6 +260,65 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE825;</Icon-Text>
     </Channel-Icon>
+    <Channel-More>
+      <Url>http://www.thepaper.cn/load_index.jsp?</Url>
+      <Parameter>nodeids</Parameter>
+      <Parameter>topCids</Parameter>
+      <Parameter>pageidx</Parameter>
+      <Parameter>lastTime</Parameter>
+    </Channel-More>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/channel_25951</Column-Url>
+        <Column-Id>25434,25436,25433,25438,25435,25437,27234,25485,25432,</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>10%公司</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25434</Column-Url>
+        <Column-Id>25434</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>能见度</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25436</Column-Url>
+        <Column-Id>25436</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>地产界</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25433</Column-Url>
+        <Column-Id>25433</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>财经上下游</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25438</Column-Url>
+        <Column-Id>25438</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>金改实验室</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25435</Column-Url>
+        <Column-Id>25435</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>牛市点线面</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25437</Column-Url>
+        <Column-Id>25437</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>科技湃</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_27234</Column-Url>
+        <Column-Id>27234</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>澎湃商学院</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25485</Column-Url>
+        <Column-Id>25485</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>自贸区连线</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25432</Column-Url>
+        <Column-Id>25432</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
   <Channel>
     <Channel-Name>思想</Channel-Name>
@@ -44,8 +328,102 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE82F;</Icon-Text>
     </Channel-Icon>
+    <Channel-More>
+      <Url>http://www.thepaper.cn/load_index.jsp?</Url>
+      <Parameter>nodeids</Parameter>
+      <Parameter>topCids</Parameter>
+      <Parameter>pageidx</Parameter>
+      <Parameter>lastTime</Parameter>
+    </Channel-More>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/channel_25952</Column-Url>
+        <Column-Id>25444,27224,26525,26878,25483,25457,25574,25455,26937,25450,25482,25445,25456,25446,25536,26506,</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>社论</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25444</Column-Url>
+        <Column-Id>25444</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>澎湃评论</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_27224</Column-Url>
+        <Column-Id>27224</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>思想湃</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26525</Column-Url>
+        <Column-Id>26525</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>上海书评</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26878</Column-Url>
+        <Column-Id>26878</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>思想市场</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25483</Column-Url>
+        <Column-Id>25483</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>私家历史</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25457</Column-Url>
+        <Column-Id>25457</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>翻书党</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25574</Column-Url>
+        <Column-Id>25574</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>艺术评论</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25455</Column-Url>
+        <Column-Id>25455</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>古代艺术</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26937</Column-Url>
+        <Column-Id>26937</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>文化课</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25450</Column-Url>
+        <Column-Id>25450</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>逝者</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25482</Column-Url>
+        <Column-Id>25482</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>澎湃研究所</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25445</Column-Url>
+        <Column-Id>25445</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>市政厅</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25456</Column-Url>
+        <Column-Id>25456</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>请讲</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25446</Column-Url>
+        <Column-Id>25446</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>专栏</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25536</Column-Url>
+        <Column-Id>25536</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>异次元</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26506</Column-Url>
+        <Column-Id>26506</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
-    <Channel>
+  <Channel>
     <Channel-Name>问政</Channel-Name>
     <Channel-Id></Channel-Id>
     <Channel-Url>http://www.thepaper.cn/gov_publish.jsp</Channel-Url>
@@ -53,6 +431,33 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE774;</Icon-Text>
     </Channel-Icon>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/gov_publish.jsp</Column-Url>
+        <Column-Id>publish.jsp</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>权威发布</Column-Name>
+        <Column-Url>http://www.thepaper.cn/gov_publish.jsp</Column-Url>
+        <Column-Id>publish.jsp</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>官方辟谣</Column-Name>
+        <Column-Url>http://www.thepaper.cn/gov_rumour.jsp</Column-Url>
+        <Column-Id>rumour.jsp</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>政在回答</Column-Name>
+        <Column-Url>http://www.thepaper.cn/gov_ask.jsp</Column-Url>
+        <Column-Id>ask.jsp</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>我的关注</Column-Name>
+        <Column-Url>http://www.thepaper.cn/myGovAttention.jsp</Column-Url>
+        <Column-Id>http://www.thepaper.cn/myGovAttention.jsp</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
   <Channel>
     <Channel-Name>生活</Channel-Name>
@@ -62,6 +467,85 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE10F;</Icon-Text>
     </Channel-Icon>
+    <Channel-More>
+      <Url>http://www.thepaper.cn/load_index.jsp?</Url>
+      <Parameter>nodeids</Parameter>
+      <Parameter>topCids</Parameter>
+      <Parameter>pageidx</Parameter>
+      <Parameter>lastTime</Parameter>
+    </Channel-More>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/channel_25953</Column-Url>
+        <Column-Id>25448,26609,25942,26015,25599,25842,26862,25769,25990,26173,26202,26404,26490,</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>有戏</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25448</Column-Url>
+        <Column-Id>25448</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>文艺范</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26609</Column-Url>
+        <Column-Id>26609</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>身体</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25942</Column-Url>
+        <Column-Id>25942</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>私·奔</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26015</Column-Url>
+        <Column-Id>26015</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>运动家</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25599</Column-Url>
+        <Column-Id>25599</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>私家地理</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25842</Column-Url>
+        <Column-Id>25842</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>楼市</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26862</Column-Url>
+        <Column-Id>26862</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>生活方式</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25769</Column-Url>
+        <Column-Id>25769</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>澎湃联播</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_25990</Column-Url>
+        <Column-Id>25990</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>视界</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26173</Column-Url>
+        <Column-Id>26173</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>亲子学堂</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26202</Column-Url>
+        <Column-Id>26202</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>赢家</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26404</Column-Url>
+        <Column-Id>26404</Column-Id>
+      </Column>
+      <Column>
+        <Column-Name>汽车圈</Column-Name>
+        <Column-Url>http://www.thepaper.cn/list_26490</Column-Url>
+        <Column-Id>26490</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
   <Channel>
     <Channel-Name>问吧</Channel-Name>
@@ -71,6 +555,13 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE11B;</Icon-Text>
     </Channel-Icon>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/ask_index.jsp</Column-Url>
+        <Column-Id>index.jsp</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
   <Channel>
     <Channel-Name>订阅</Channel-Name>
@@ -80,5 +571,12 @@
       <Icon-Font>Segoe MDL2 Assets</Icon-Font>
       <Icon-Text>&#xE815;</Icon-Text>
     </Channel-Icon>
+    <Channel-Colums>
+      <Column>
+        <Column-Name>推荐</Column-Name>
+        <Column-Url>http://www.thepaper.cn/channel_-1</Column-Url>
+        <Column-Id>-1</Column-Id>
+      </Column>
+    </Channel-Colums>
   </Channel>
 </Channels>

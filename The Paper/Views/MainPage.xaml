@@ -17,6 +17,7 @@
                     <Button Background="Transparent" FontSize="20"
                             Name="Ham" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Click="Ham_Click"/>
                     <ListView ItemsSource="{Binding ChannelList}" Background="#F5F5F5"
+                              Name="Menu"
                              SelectionChanged="ListBox_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="local2:Channel">
